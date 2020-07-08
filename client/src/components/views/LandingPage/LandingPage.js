@@ -37,28 +37,45 @@ function LandingPage() {
 
 	}, [])
 
+	// const getProducts = (variables) =>{		
+	// 	Axios.post('/api/product/getProducts', variables)
+	// 	  .then(response => {
+	// 	  	if (response.data.success) {
+
+	// 	  		if(variables.loadMore){
+	// 	  			setProducts([...Products, ...response.data.products])
+	// 	  		// keep existing products displayed + fetch new products requested/queried for
+	// 	  	} else {
+	// 	  		setProducts(response.data.products)
+	// 	  		// keep existing products displayed + fetch new products requested/queried for
+	// 	  	}
+
+
+	// 	  		setProducts([...Products, ...response.data.products])
+	// 	  		// keep existing products displayed + fetch new products requested/queried for
+
+	// 	  		setPostSize(response.data.postSize)
+
+	// 	  		console.log(response.data.products)
+
+	// 	  	} else {
+	// 	  		alert('failed to fetch product data')
+	// 	  	}
+	// 	  })
+	
+	// } //this method does fetch all products from mongoDB + receive a parameter(variables) to determine how many results will display
+
 	const getProducts = (variables) =>{		
-		Axios.post('/api/product/getProducts', variables)
+		Axios.post('/api/product/getProducts')
 		  .then(response => {
 		  	if (response.data.success) {
 
-		  		if(variables.loadMore){
-		  			setProducts([...Products, ...response.data.products])
-		  		// keep existing products displayed + fetch new products requested/queried for
-		  	} else {
 		  		setProducts(response.data.products)
 		  		// keep existing products displayed + fetch new products requested/queried for
+		  		console.log(response.data.products)
 		  	}
 
-
-		  		setProducts([...Products, ...response.data.products])
-		  		// keep existing products displayed + fetch new products requested/queried for
-
-		  		setPostSize(response.data.postSize)
-
-		  		console.log(response.data.products)
-
-		  	} else {
+		  	 else {
 		  		alert('failed to fetch product data')
 		  	}
 		  })

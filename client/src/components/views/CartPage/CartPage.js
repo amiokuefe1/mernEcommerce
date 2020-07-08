@@ -60,11 +60,13 @@ function CartPage(props) {
 		 					alert('Failed to get cart info')
 		 				}
 		 			})
-	}
+			})
+    }
 
 	const transactionSuccess = () => {
 		let variables = {
-			cartDetail: props.user.cartDetail, paymentData: data
+			cartDetail: props.user.cartDetail
+			// , paymentData: data
 		}
 
 		Axios.post('/api/users/successBuy', variables)
